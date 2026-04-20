@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm *)",
+      "Bash(supabase *)",
+      "Bash(git status)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npx turbo *)",
+      "Bash(docker-compose *)",
+      "Bash(node *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(supabase db reset --db-url postgresql://*prod*)"
+    ]
+  },
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

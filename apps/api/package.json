@@ -1,0 +1,36 @@
+{
+  "name": "@h3/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.0",
+    "@fastify/helmet": "^11.0.0",
+    "@fastify/jwt": "^8.0.0",
+    "@fastify/oauth2": "^7.0.0",
+    "@fastify/rate-limit": "^9.0.0",
+    "@fastify/swagger": "^8.0.0",
+    "@h3/domain": "workspace:*",
+    "@h3/shared": "workspace:*",
+    "@supabase/supabase-js": "^2.45.0",
+    "fastify": "^5.0.0",
+    "ioredis": "^5.3.0",
+    "pino": "^9.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "rimraf": "^5.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0"
+  }
+}

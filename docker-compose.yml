@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  # Redis para dev local (BullMQ + cache)
+  # Em prod: Upstash Redis (gerenciado)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Bull Board: UI de monitoramento de filas
+  bull-board:
+    image: deadly0/bull-board
+    ports:
+      - '3030:3000'
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      redis:
+        condition: service_healthy
+
+volumes:
+  redis_data:
+
+# Postgres e Auth: usar `supabase start` (CLI oficial)
+# Não rodar Supabase no docker-compose — o CLI cria ambiente completo
